@@ -1,0 +1,23 @@
+{
+  "name": "bloomfilter-plus",
+  "version": "0.1.0",
+  "description": "A wrapper for bloomfilter.",
+  "main": "index.js",
+  "engines" : { "node" : ">=6.0.0" },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talrasha007/bloomfilter-plus.git"
+  },
+  "keywords": [
+    "bloomfilter"
+  ],
+  "author": "talrasha007",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/talrasha007/bloomfilter-plus/issues"
+  },
+  "homepage": "https://github.com/talrasha007/bloomfilter-plus#readme",
+  "dependencies": {
+    "bloomfilter": "0.0.16"
+  }
+}

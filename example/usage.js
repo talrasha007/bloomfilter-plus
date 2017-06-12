@@ -1,9 +1,4 @@
-# bloomfilter-plus
-A wrapper for [bloomfilter](https://www.npmjs.com/package/bloomfilter), add some serialization features.
-
-## Basic usage
-```js
-const BloomFilter = require('bloomfilter-plus');
+const BloomFilter = require('../');
 
 function testBloom(bf) {
   // Test if an item is in our filter.
@@ -37,10 +32,7 @@ const array = bloom.buckets;
 const bloomFromArr = new BloomFilter(array, 3);
 console.log('Test bloomFromArr.');
 testBloom(bloomFromArr);
-```
 
-## What's new
-```js
 // Convert bloom buckets to buffer.
 const bytes = bloom.toBuffer();
 // Rebuild bloom from buffer.
@@ -61,4 +53,3 @@ bestBf.add('foo');
 bestBf.add('bar');
 console.log('Test bestBf.');
 testBloom(bestBf);
-```
