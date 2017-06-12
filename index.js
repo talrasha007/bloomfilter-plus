@@ -43,14 +43,14 @@ class BloomFilter extends require('bloomfilter').BloomFilter {
     return BloomFilter.fromBuffer(buffer.slice(1), numHash);
   }
 
-  static bestFor(elementNum, falsePositiveRate) {
-    let bitsize = -1.0 / LN2SQUARED * elementNum * Math.log(falsePositiveRate);
-    bitsize = Math.min(MAX_BLOOM_FILTER_SIZE * 8, bitsize);
+  static bestFor(elementNum, falsePositiveRate, maxBytes = MAX_BLOOM_FILTER_SIZE) {
+    let bitSize = -1.0 / LN2SQUARED * elementNum * Math.log(falsePositiveRate);
+    bitSize = Math.min(maxBytes * 8, bitSize);
 
     // The ideal number of hash functions is:
     // filter size * ln(2) / number of elements
     // See: https://github.com/bitcoin/bitcoin/blob/master/src/bloom.cpp
-    let nHashFuncs = Math.floor(bitsize / elementNum * LN2);
+    let nHashFuncs = Math.floor(bitSize / elementNum * LN2);
     if (nHashFuncs > MAX_HASH_FUNCS) {
       nHashFuncs = MAX_HASH_FUNCS;
     }
@@ -58,7 +58,7 @@ class BloomFilter extends require('bloomfilter').BloomFilter {
       nHashFuncs = MIN_HASH_FUNCS;
     }
 
-    return new BloomFilter(bitsize, nHashFuncs);
+    return new BloomFilter(bitSize, nHashFuncs);
   }
 }
 
